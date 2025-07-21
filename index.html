@@ -4,27 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AR Evoli</title>
-
-  <!-- A-Frame et AR.js -->
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script></head>
-
-<body style="margin: 0; overflow: hidden;">
-  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body>
+  <a-scene mindar-image="imageTargetSrc: ./evoli.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
     <a-assets>
-      <a-asset-item id="evoliModel" src="evoli.glb"></a-asset-item>
+      <a-asset-item id="evoliModel" src="./evoli.glb"></a-asset-item>
     </a-assets>
 
-    <a-marker type="pattern" url="targets.mind">
-      <a-entity 
-        gltf-model="#evoliModel" 
-        scale="0.3 0.3 0.3" 
-        position="0 0 0">
-      </a-entity>
-    </a-marker>
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-    <a-entity camera></a-entity>
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-gltf-model src="#evoliModel" position="0 0 0.1" rotation="0 0 0" scale="0.005 0.005 0.005"
+        animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+      </a-gltf-model>
+    </a-entity>
   </a-scene>
 </body>
 </html>
