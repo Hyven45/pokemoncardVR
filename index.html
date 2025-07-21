@@ -6,9 +6,8 @@
   <title>AR Evoli</title>
 
   <!-- A-Frame et AR.js -->
-  <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
-</head>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script></head>
 
 <body style="margin: 0; overflow: hidden;">
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
@@ -17,7 +16,7 @@
       <a-asset-item id="evoliModel" src="evoli.glb"></a-asset-item>
     </a-assets>
 
-    <a-marker type="pattern" url="pattern-evoli.patt">
+    <a-marker type="pattern" url="targets.mind">
       <a-entity 
         gltf-model="#evoliModel" 
         scale="0.3 0.3 0.3" 
